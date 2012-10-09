@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/var/www/rue89v2/dev/sites/news/modules/custom/rue89_site'
+let g:netrw_dirhist_2='/var/www/rue89v2/dev/sites/all/themes/rue89base/templates/views/export/edd'
+let g:netrw_dirhist_3='/var/www'
+let g:netrw_dirhist_4='/var/www/rue89v2'
+let g:netrw_dirhist_5='/var/www/rue89v2/dev/sites/news/modules/custom/rue89_site'
+let g:netrw_dirhist_6='/home/cirotteau/.vim/bundle_available/vim-jade'
