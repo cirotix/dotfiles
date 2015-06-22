@@ -13,28 +13,41 @@ set nocompatible
 """"""""""""""""""""""""
 " Use vundle to manage the plugins
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Call pathogen
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
+Bundle 'gmarik/Vundle.vim'
 
 " My Bundles here :
 " repos from github
-Bundle 'othree/xml.vim'
-Bundle 'wincent/Command-T'
-Bundle 'kien/ctrlp.vim'
 Bundle 'ddollar/nerdcommenter'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-unimpaired'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'honza/vim-snippets'
+Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'kien/ctrlp.vim'
+Bundle 'klen/python-mode'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'msanders/snipmate.vim'
+Bundle 'majutsushi/tagbar'
+" Bundle 'msanders/snipmate.vim'
+Bundle 'neowit/vim-force.com'
+Bundle 'othree/xml.vim'
 Bundle 'robhudson/snipmate_for_django'
-Bundle 'jceb/vim-orgmode'
-Bundle 'scrooloose/syntastic'
-" Bundle 'chriskempson/tomorrow-theme/vim'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+" Bundle 'wincent/Command-T'
+
+" Bundle 'jceb/vim-orgmode'
+" Bundle 'scrooloose/syntastic'
+
 
 " vim-scripts
 "Bundle 'bufexplorer.zip'
@@ -42,6 +55,8 @@ Bundle 'bufkill.vim'
 Bundle 'calendar.vim--Matsumoto'
 Bundle 'bufexplorer.zip'
 Bundle 'taglist.vim'
+
+call vundle#end() 
 
 
 """"""""""""""""""""""""""""""
@@ -91,14 +106,18 @@ set background=dark
 colorscheme desert
 
 "" GUI with no GUI ;)
-"" no toolbar
+"" no toolbar or menu
 set guioptions-=T
 set guioptions-=m
-:let g:toggleMenu = 0
-map <silent> <S-F2> :if g:toggleMenu == 1<CR>:set guioptions-=m<CR>:let g:toggleMenu = 0<CR>:else<CR>:set guioptions+=m<CR>:let g:toggleMenu = 1<CR>:endif<CR> 
+" No scrollbars please
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+set guioptions-=b
 
 "fonts
-set gfn=Inconsolata\ 9
+set gfn=Inconsolata\ 10 
 
 " nicely format the comments
 set formatoptions=roc
@@ -113,10 +132,6 @@ endif
 
 "" highlight the current line
 set cursorline
-hi cursorline guibg=#333333
-hi CursorColumn guibg=#333333
-
-
 
 
 """"""""""""""""""
@@ -156,6 +171,14 @@ imap <m-l> <esc>:exec "normal f" . leavechar<cr>a
 imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
 
 
+"""""""""""""""""""
+" UNDO
+"""""""""""""""""""
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
 """""""""""""""""""""
 " CUSTOM COMMANDS   "
 """""""""""""""""""""
@@ -164,11 +187,8 @@ imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
 let mapleader = ","
 let maplocalleader = "&"
 
-" CommandT
-map <leader>t :CommandT<cr>
-map <leader>b :CommandTBuffer<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+" Kill buffer without killing the window
+map <leader>k :bp<bar>sp<bar>bn<bar>bd<CR>
 
 "   Edit another file in the same directory as the current file
 "   uses expression to extract path from current file's path
@@ -227,7 +247,91 @@ if has("autocmd")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Do not use python-mode folding
+let g:pymode_folding = 0
+
+" Do not use python-mode indent
+let g:pymode_indent = 0
+
+" do not open window
+let g:pymode_lint_cwindow = 0
+
+let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
+
+let g:pymode_lint_ignore = "E501,W0403,W0232,E1101,E1102,F0401,C0111"
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Django snippets
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
+
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+" neocomplcache
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" " Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" " Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+"
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> <leader>G :<C-u>UniteWithCursorWord grep:. -buffer-name=search-buffer<CR>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>u :<C-u>Unite -buffer-name=buffer  buffer<cr>
+
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
+endif
+
+
+" Vim-force
+let g:apex_backup_folder="/tmp/apex/backup"
+let g:apex_temp_folder="/tmp/apex/gvim-deployment"
+let g:apex_properties_folder="/home/cirotteau/.sf"
+let g:apex_tooling_force_dot_com_path = '/usr/local/bin/tooling-force.com.jar'
+
+
+" UltiSnips
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" " If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
