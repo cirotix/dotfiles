@@ -8,55 +8,9 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-""""""""""""""""""""""""
-"  PLUGINS MANAGEMENT  "
-""""""""""""""""""""""""
-" Use vundle to manage the plugins
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Bundle 'gmarik/Vundle.vim'
-
-" My Bundles here :
-" repos from github
-Bundle 'ddollar/nerdcommenter'
-Bundle 'h1mesuke/unite-outline'
-Bundle 'honza/vim-snippets'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'klen/python-mode'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'majutsushi/tagbar'
-" Bundle 'msanders/snipmate.vim'
-Bundle 'neowit/vim-force.com'
-Bundle 'othree/xml.vim'
-Bundle 'robhudson/snipmate_for_django'
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-" Bundle 'wincent/Command-T'
-
-" Bundle 'jceb/vim-orgmode'
-" Bundle 'scrooloose/syntastic'
-
-
-" vim-scripts
-"Bundle 'bufexplorer.zip'
-Bundle 'bufkill.vim'
-Bundle 'calendar.vim--Matsumoto'
-Bundle 'bufexplorer.zip'
-Bundle 'taglist.vim'
-
-call vundle#end() 
+source $HOME/.vim/settings/plugins.vim
+source $HOME/.vim/settings/unite.vim
 
 
 """"""""""""""""""""""""""""""
@@ -261,6 +215,8 @@ let g:pymode_lint_cwindow = 0
 let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
 
 let g:pymode_lint_ignore = "E501,W0403,W0232,E1101,E1102,F0401,C0111"
+
+let g:pymode_rope = 0
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Django snippets
@@ -298,40 +254,25 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
-" Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-nnoremap <silent> <leader>g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-nnoremap <silent> <leader>G :<C-u>UniteWithCursorWord grep:. -buffer-name=search-buffer<CR>
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>u :<C-u>Unite -buffer-name=buffer  buffer<cr>
-
-if executable('pt')
-  let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-  let g:unite_source_grep_recursive_opt = ''
-  let g:unite_source_grep_encoding = 'utf-8'
-endif
-
-
 " Vim-force
 let g:apex_backup_folder="/tmp/apex/backup"
 let g:apex_temp_folder="/tmp/apex/gvim-deployment"
 let g:apex_properties_folder="/home/cirotteau/.sf"
 let g:apex_tooling_force_dot_com_path = '/usr/local/bin/tooling-force.com.jar'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-force snippets
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd FileType apexcode set ft=python.django " For SnipMate
+
 
 " UltiSnips
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+inoremap <c-x><c-k> <c-x><c-k>
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"

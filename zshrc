@@ -31,6 +31,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git django python autojump)
+# vi-mode
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,3 +50,8 @@ source '/home/cirotteau/dev/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables bash completion for gcloud.
 source '/home/cirotteau/dev/google-cloud-sdk/completion.zsh.inc'
+
+alias 'xclip' xclip -selection clipboard
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
