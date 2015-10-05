@@ -1,0 +1,44 @@
+#!/bin/bash
+############################################################
+# 
+############################################################
+
+function lock {
+    scrot /tmp/screen_locked.png
+    convert /tmp/screen_locked.png -blur 3x3 /tmp/screen_locked2.png
+    i3lock -i /tmp/screen_locked2.png
+    # i3lock -c 000000
+}
+function suspend {
+    sudo pm-suspend
+    # dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+}
+function reboot {
+    dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart
+}
+function shutdown {
+    dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
+}
+
+case "$1" in
+    lock)
+        lock
+        ;;
+    logout)
+        i3-msg exit
+        ;;
+    suspend)
+        lock && suspend
+        ;;
+    reboot)
+        reboot
+        ;;
+    shutdown)
+        shutdown
+        ;;
+    *)
+        echo "Usage: $0 {lock|logout|suspend|reboot|poweroff}"
+        exit 2
+esac
+
+exit 0
