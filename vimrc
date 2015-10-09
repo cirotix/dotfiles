@@ -158,6 +158,7 @@ endif
 " Could use snipmate
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
+let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
 
 """"""""""""""""
