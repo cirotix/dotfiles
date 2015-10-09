@@ -57,7 +57,8 @@ set wildmode=longest,list
 
 set background=dark
 "" color
-colorscheme desert
+" colorscheme desert
+colorscheme solarized
 
 "" GUI with no GUI ;)
 "" no toolbar or menu
@@ -71,7 +72,8 @@ set guioptions-=R
 set guioptions-=b
 
 "fonts
-set gfn=Inconsolata\ 10 
+set guifont=Inconsolata\ for\ Powerline\ 11
+let g:airline_powerline_fonts = 1
 
 " nicely format the comments
 set formatoptions=roc
