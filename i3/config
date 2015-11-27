@@ -13,6 +13,7 @@ for_window [class="Arandr"] floating enable
 for_window [class="I3-exit"] floating enable
 for_window [class="^Spotify$"] floating enable
 for_window [class="insync.py"] floating enable
+for_window [class="wicd-client.py"] floating enable
 
 set $mod Mod4
 
@@ -26,7 +27,7 @@ set $mod Mod4
 font pango:DejaVu Sans Mono, FontAwesome 10
 
 # borders
-new_window pixel 0
+new_window pixel 1
 hide_edge_borders vertical
 
 
@@ -92,6 +93,7 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+bindsym $mod+Tab focus parent, focus right, focus child
 
 # focus the child container
 bindsym $mod+d focus child
