@@ -127,6 +127,7 @@ imap <m-l> <esc>:exec "normal f" . leavechar<cr>a
 imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
 
 
+
 """""""""""""""""""
 " UNDO
 """""""""""""""""""
@@ -145,6 +146,9 @@ let maplocalleader = "&"
 
 " Kill buffer without killing the window
 map <leader>k :bp<bar>sp<bar>bn<bar>bd<CR>
+"
+
+let g:AutoPairsShortcutJump = '<Leader>c'
 
 "   Edit another file in the same directory as the current file
 "   uses expression to extract path from current file's path
@@ -219,6 +223,8 @@ let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
 
 let g:pymode_lint_ignore = "E501,W0403,W0232,E1101,E1102,F0401,C0111"
 
+nmap <F7> :PymodeLint<CR>
+
 let g:pymode_rope = 0
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -252,7 +258,14 @@ let g:neocomplcache_enable_smart_case = 1
 " " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-"
+
+" ctrlp
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v([\/]\.(git|hg|svn|)|node_modules)$',
+  \ 'file': '\v\.(pyc)$',
+  \ }
+
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()

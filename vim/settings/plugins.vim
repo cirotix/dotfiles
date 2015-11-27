@@ -18,7 +18,6 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'klen/python-mode'
 Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'Lokaltog/vim-powerline'
 Bundle 'majutsushi/tagbar'
 Bundle 'neowit/vim-force.com'
 Bundle 'othree/xml.vim'
@@ -34,10 +33,12 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'bling/vim-airline'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'jiangmiao/auto-pairs'
+
 
 
 " Bundle 'wincent/Command-T'
-" Bundle 'jiangmiao/auto-pairs'
 " Bundle 'msanders/snipmate.vim'
 
 " Bundle 'jceb/vim-orgmode'
