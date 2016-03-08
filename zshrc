@@ -30,7 +30,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git django python autojump)
+plugins=(git django python autojump zsh-navigation-tools)
 # vi-mode
 
 source $ZSH/oh-my-zsh.sh
@@ -54,4 +54,12 @@ source '/home/cirotteau/dev/google-cloud-sdk/completion.zsh.inc'
 alias 'xclip' xclip -selection clipboard
 
 # ctrl-r starts searching history backward
-bindkey '^r' history-incremental-search-backward
+# bindkey '^r' history-incremental-search-backward
+
+autoload znt-history-widget
+zle -N znt-history-widget
+bindkey "^R" znt-history-widget
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
