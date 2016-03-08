@@ -35,6 +35,7 @@ Bundle 'bling/vim-airline'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'jiangmiao/auto-pairs'
+Bundle 'alfredodeza/pytest.vim'
 
 
 
