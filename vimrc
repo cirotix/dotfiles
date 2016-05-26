@@ -9,8 +9,8 @@
 set nocompatible
 
 
-source $HOME/.vim/settings/plugins.vim
-source $HOME/.vim/settings/unite.vim
+" source $HOME/.vim/settings/plugins.vim
+source $HOME/.vim/settings/plug.vim
 
 
 """"""""""""""""""""""""""""""
@@ -46,6 +46,7 @@ set smartcase		" only if the pattern is all downcase
 set shiftwidth=4
 set tabstop=4
 set expandtab
+let g:indent_guides_start_level=4
 
 " command line completion
 set wildmenu 
@@ -55,10 +56,10 @@ set wildmode=longest,list
 "" LAYOUT AND COLORS  "
 """""""""""""""""""""""
 
-set background=dark
 "" color
-" colorscheme desert
 colorscheme solarized
+
+set background=dark
 
 "" GUI with no GUI ;)
 "" no toolbar or menu
@@ -93,38 +94,12 @@ set cursorline
 """"""""""""""""""
 " MOVING AROUND  "
 """"""""""""""""""
-
 " use the arrow to cycle the buffer
 map <right> :bn<CR>
 map <left> :bp<CR>
 "" and disable the up and down key so that I am forced to use vim correctly
 map <up> " "
 map <down> " "
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Parenthesis/bracket expanding
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $$1 <esc>`>a)<esc>`<i(<esc>
-")
-vnoremap $$2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $$3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $$q <esc>`>a'<esc>`<i'<esc>
-vnoremap $$w <esc>`>a"<esc>`<i"<esc>
-
-"Map auto complete of (, ", ', [
-inoremap $$1 ()<esc>:let leavechar=")"<cr>i
-inoremap $$2 []<esc>:let leavechar="]"<cr>i
-inoremap $$4 {<esc>o}<esc>:let leavechar="}"<cr>O
-inoremap $$3 {}<esc>:let leavechar="}"<cr>i
-inoremap $$q ''<esc>:let leavechar="'"<cr>i
-inoremap $$w ""<esc>:let leavechar='"'<cr>i
-au BufNewFile,BufRead *.\(vim\)\@! inoremap " ""<esc>:let leavechar='"'<cr>i
-au BufNewFile,BufRead *.\(txt\)\@! inoremap ' ''<esc>:let leavechar="'"<cr>i
-
-imap <m-l> <esc>:exec "normal f" . leavechar<cr>a
-imap <d-l> <esc>:exec "normal f" . leavechar<cr>a
 
 
 
@@ -145,10 +120,8 @@ let mapleader = ","
 let maplocalleader = "&"
 
 " Kill buffer without killing the window
-map <leader>k :bp<bar>sp<bar>bn<bar>bd<CR>
-"
+map <leader>k :BD<CR>
 
-let g:AutoPairsShortcutJump = '<Leader>c'
 
 "   Edit another file in the same directory as the current file
 "   uses expression to extract path from current file's path
@@ -159,8 +132,6 @@ else
 	map <Leader>e :e <C-R>=expand("%:p:h") . "\" <CR>
 endif
 
-" Could use snipmate
-iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
@@ -175,7 +146,6 @@ filetype plugin indent on
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
@@ -196,16 +166,6 @@ else
   set autoindent		" always set autoindenting on
 endif " has("autocmd")
 
-" Drupal *.module
-if has("autocmd")
-  " Drupal *.module files.
-  augroup module
-    autocmd BufRead                     *.module set filetype=php
-    autocmd BufRead                     *.install set filetype=php
-    autocmd BufRead                     *.inc set filetype=php
-    autocmd BufRead                     *.profile set filetype=php
-  augroup END
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python configuration
@@ -226,7 +186,8 @@ let g:pymode_lint_ignore = "E501,W0403,W0232,E1101,E1102,F0401,C0111"
 nmap <F7> :PymodeLint<CR>
 
 let g:pymode_rope = 0
-"
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Django snippets
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -248,16 +209,6 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-" neocomplcache
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " ctrlp
 
@@ -265,10 +216,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v([\/]\.(git|hg|svn|)|node_modules)$',
   \ 'file': '\v\.(pyc)$',
   \ }
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Vim-force
 let g:apex_backup_folder="/tmp/apex/backup"
@@ -292,3 +239,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+source $HOME/.vim/settings/unite.vim
+source $HOME/.vim/settings/neocomplete.vim
