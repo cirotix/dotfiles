@@ -10,8 +10,8 @@ nnoremap <leader>t :<C-u>Unite -buffer-name=files   -start-insert file_rec/async
 nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file_rec<cr>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
 " nnoremap <leader>o :<C-u>Unite -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
-nnoremap <leader>u :<C-u>Unite -buffer-name=buffer  buffer<cr>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank -start-insert  history/yank<cr>
+nnoremap <leader>u :<C-u>Unite -buffer-name=buffer  -start-insert buffer<cr>
 
 if executable('pt')
   let g:unite_source_grep_command = 'pt'
