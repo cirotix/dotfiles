@@ -48,6 +48,10 @@ set tabstop=4
 set expandtab
 let g:indent_guides_start_level=4
 
+set autoread
+au CursorHold * checktime
+
+
 " command line completion
 set wildmenu 
 set wildmode=longest,list 
@@ -174,7 +178,7 @@ endif " has("autocmd")
 let g:pymode_folding = 0
 
 " Do not use python-mode indent
-let g:pymode_indent = 0
+" let g:pymode_indent = 0
 
 " do not open window
 let g:pymode_lint_cwindow = 0
