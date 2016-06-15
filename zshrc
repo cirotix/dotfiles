@@ -7,6 +7,7 @@ antigen bundle django
 antigen bundle python 
 antigen bundle fabric 
 antigen bundle autojump 
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-navigation-tools
 
 antigen theme agnoster
