@@ -38,7 +38,7 @@ Plug 'Shougo/vimproc.vim'
 Plug 'majutsushi/tagbar'
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -66,18 +66,6 @@ Plug 'qpkorr/vim-bufkill'
 " gui
 Plug 'bling/vim-airline'
 Plug 'altercation/vim-colors-solarized'
-
-" removed
-" Plug 'tpope/vim-unimpaired'
-
-
-" Plug 'mjbrownie/vim-htmldjango_omnicomplete'
-" Plug 'Shougo/neocomplete.vim'
-" Plug 'nathanaelkane/vim-indent-guides'
-
-
-" Plug 'msanders/snipmate.vim'
-" Plug 'scrooloose/syntastic'
 
 
 filetype plugin indent on                   " required!
