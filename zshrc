@@ -3,6 +3,7 @@ source $HOME/.dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle common-aliases
+antigen bundle https://github.com/zsh-users/zsh-autosuggestions
 antigen bundle git 
 antigen bundle django 
 antigen bundle python 
@@ -21,8 +22,6 @@ antigen apply
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-
-export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-amd64"
 
 alias 'xclip' xclip -selection clipboard
 
