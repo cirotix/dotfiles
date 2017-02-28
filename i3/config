@@ -145,7 +145,10 @@ bindsym XF86Display exec arandr
 bindsym $mod+F7 exec arandr
 
 # screenshot
-bindsym Print exec xfce4-screenshooter
+bindsym Print exec shutter
+# bindsym Print exec scrot -u -e 'mv $f ~/shots/'
+# bindsym Print exec scrot -s -e 'mv $f ~/shots/'
+# bindsym $mod+Ctrl+Print exec scrot -u -d 3 -c -e 'mv $f ~/shots/'
 
 # volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 1%- unmute && killall -SIGUSR1 py3status
