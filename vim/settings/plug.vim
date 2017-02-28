@@ -59,6 +59,9 @@ Plug 'othree/xml.vim'
 
 Plug 'neowit/vim-force.com'
 
+" software configuration files
+Plug 'vim-scripts/nginx.vim'
+
 " utils
 Plug 'ddollar/nerdcommenter'
 Plug 'qpkorr/vim-bufkill'
