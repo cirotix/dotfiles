@@ -39,7 +39,7 @@ Plug 'Shougo/vimproc.vim'
 Plug 'majutsushi/tagbar'
 
 Plug 'jiangmiao/auto-pairs'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -51,7 +51,6 @@ Plug 'tpope/vim-fugitive'
 
 
 " languages
-
 Plug 'klen/python-mode'
 Plug 'alfredodeza/pytest.vim'
 Plug 'hynek/vim-python-pep8-indent'
