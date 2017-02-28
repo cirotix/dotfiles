@@ -236,7 +236,7 @@ let g:apex_tooling_force_dot_com_path = '/usr/local/bin/tooling-force.com.jar'
 " UltiSnips
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-c>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 inoremap <c-x><c-k> <c-x><c-k>
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
