@@ -20,6 +20,7 @@ Plug 'Lokaltog/vim-easymotion'
 " editing
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
 
 " moving around
 Plug 'kien/ctrlp.vim'
