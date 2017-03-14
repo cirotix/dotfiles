@@ -227,11 +227,6 @@ let g:apex_temp_folder="/tmp/apex/gvim-deployment"
 let g:apex_properties_folder="/home/cirotteau/.sf"
 let g:apex_tooling_force_dot_com_path = '/usr/local/bin/tooling-force.com.jar'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-force snippets
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" autocmd FileType apexcode set ft=python.django " For SnipMate
-
 
 " UltiSnips
 " Trigger configuration. Do not use <tab> if you use
