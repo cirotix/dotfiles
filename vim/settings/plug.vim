@@ -54,10 +54,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'klen/python-mode'
 Plug 'alfredodeza/pytest.vim'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'othree/html5.vim'
 
 Plug 'othree/xml.vim'
 
 Plug 'neowit/vim-force.com'
+
+" framework
+Plug 'posva/vim-vue'
 
 " software configuration files
 Plug 'vim-scripts/nginx.vim'
