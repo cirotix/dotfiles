@@ -1,0 +1,30 @@
+[user]
+	email = d@cirotteau.info
+	name = Damien Cirotteau
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[diff]
+ # external = git_diff_wrapper
+[pager]
+  diff =
+[receive]
+	denyDeleteCurrent = warn
+[alias]
+  meld = !/usr/local/bin/git-meld.pl
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  lol=log --graph --decorate --pretty=oneline --abbrev-commit
+  lola=log --graph --decorate --pretty=oneline --abbrev-commit --all
+  prune=remote prune origine
+  
+[push]
+	default = simple
+[merge]
+    tool = mymeld
+[diff]
+	tool = meld
+[mergetool "mymeld"]
+     cmd = /usr/local/bin/gitmerge $BASE $LOCAL $REMOTE $MERGED
+[core]
+	excludesfile = /home/cirotteau/.gitignore_global
