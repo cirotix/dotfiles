@@ -12,12 +12,14 @@
 [receive]
 	denyDeleteCurrent = warn
 [alias]
+  co=checkout
   meld = !/usr/local/bin/git-meld.pl
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   lol=log --graph --decorate --pretty=oneline --abbrev-commit
   lola=log --graph --decorate --pretty=oneline --abbrev-commit --all
   prune=remote prune origine
-  
+  refresh="!git fetch && git rebase origin/master"
+  cleanup="!git remote prune origin && git repack && git gc && git branch --merged|grep -v master |xargs -n 1 git branch -d"
 [push]
 	default = simple
 [merge]
