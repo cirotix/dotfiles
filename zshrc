@@ -24,6 +24,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 alias 'xclip' xclip -selection clipboard
+alias 'bc' bc -l
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
