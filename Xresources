@@ -148,10 +148,14 @@
 ! URxvt*iconFile:                       file
 ! URxvt.font:xft:Monospace:pixelsize=12
 ! URxvt.boldfont:xft:Monospace-Bold:pixelsize=12
-URxvt.font:xft:Inconsolata for Powerline:pixelsize=14
-URxvt.boldfont:xft:Inconsolata for Powerline:pixelsize=14
+! URxvt.font:xft:Inconsolata for Powerline:pixelsize=14
+! URxvt.boldfont:xft:Inconsolata for Powerline:pixelsize=14
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
+URxvt.font:xft:InputMonoNarrow-LightRegular:pixelsize=12
+URxvt.boldfont:xft:InputMonoNarrow-Bold:pixelsize=12
+URxvt*italicFont:xft:InputMonoNarrow-LightItalic:pixelsize=12
+URxvt*boldItalicFont:xft:InputMonoNarrow-BoldItalic:pixelsize=12
 ! URxvt*intensityStyles:                boolean
 ! URxvt*inputMethod:                    name
 ! URxvt*preeditType:                    style
