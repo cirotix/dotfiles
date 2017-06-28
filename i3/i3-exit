@@ -6,18 +6,7 @@
 function lock {
     scrot /tmp/screen_locked.png
     convert /tmp/screen_locked.png -blur 3x3 /tmp/screen_locked2.png
-    i3lock -i /tmp/screen_locked2.png
-    # i3lock -c 000000
-}
-function suspend {
-    sudo pm-suspend
-    # dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
-}
-function reboot {
-    dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart
-}
-function shutdown {
-    dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
+    i3lock --show-failed-attempts -i /tmp/screen_locked2.png
 }
 
 case "$1" in
@@ -28,13 +17,14 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        lock && suspend
+        lock && systemctl suspend
+        suspend
         ;;
     reboot)
-        reboot
+        systemctl reboot
         ;;
-    shutdown)
-        shutdown
+    poweroff)
+        systemctl poweroff
         ;;
     *)
         echo "Usage: $0 {lock|logout|suspend|reboot|poweroff}"
