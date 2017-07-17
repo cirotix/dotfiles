@@ -51,6 +51,9 @@ let g:indent_guides_start_level=4
 set autoread
 au CursorHold * checktime
 
+"disable novisual mode
+noremap Q <Nop>
+
 
 " command line completion
 set wildmenu 
@@ -61,9 +64,10 @@ set wildmode=longest,list
 """""""""""""""""""""""
 
 "" color
+" set termguicolors
+set background=dark
 colorscheme solarized
 
-set background=dark
 
 "" GUI with no GUI ;)
 "" no toolbar or menu
@@ -94,6 +98,15 @@ endif
 "" highlight the current line
 set cursorline
 
+"" show at least on line under cursor
+set scrolloff=1
+
+"" show at least 5 chars after cursor
+set sidescrolloff=5
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
 
 """"""""""""""""""
 " MOVING AROUND  "
@@ -104,7 +117,6 @@ map <left> :bp<CR>
 "" and disable the up and down key so that I am forced to use vim correctly
 map <up> " "
 map <down> " "
-
 
 
 """""""""""""""""""
