@@ -62,6 +62,7 @@ Plug 'neowit/vim-force.com'
 
 " framework
 Plug 'posva/vim-vue'
+Plug 'amadeus/vim-mjml'
 
 " software configuration files
 Plug 'vim-scripts/nginx.vim'
