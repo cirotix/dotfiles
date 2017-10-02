@@ -210,6 +210,12 @@ let g:pymode_rope = 0
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HTML
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType mjml setlocal shiftwidth=2 tabstop=2
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin configuration
