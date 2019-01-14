@@ -16,7 +16,7 @@
   lol=log --graph --decorate --pretty=oneline --abbrev-commit
   lola=log --graph --decorate --pretty=oneline --abbrev-commit --all
   prune=remote prune origine
-  cleanup="!git remote prune origin && git repack && git gc && git branch --merged|grep -v master |xargs -n 1 git branch -d"
+    cleanup="!git fetch --prune && git repack && git gc && git branch --merged|grep -v master | grep -v pwa-dev | grep -v staging |xargs -n 1 git branch -d"
 [push]
 	default = simple
 [pull]
